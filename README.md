@@ -2,7 +2,10 @@
 
 **Free web search for AI models and humans. No search API bill, no vendor lock-in.**
 
-[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
+[![Windows](https://img.shields.io/badge/Windows-0078D6?logo=windows&logoColor=white)](README.md#quick-start)
+[![macOS](https://img.shields.io/badge/macOS-111827?logo=apple&logoColor=white)](README.md#quick-start)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)](README.md#quick-start)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![MCP compatible](https://img.shields.io/badge/MCP-compatible-7c3aed)](https://modelcontextprotocol.io/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -15,6 +18,7 @@ SearNXG gives an agent **live web results** through one self-hosted backend. Poi
 - **Private if you want it.** Run your own SearXNG engine with one Docker command, or use zero-key built-in sources.
 - **Hard to break.** Parallel sources, per-source fallbacks, and offline results when the network fights back.
 - **One-click setup for agents.** Copy a prompt from the app and let your AI wire up the MCP itself.
+- **Runs where you do.** One-command launchers for Windows, macOS and Linux, with a separate environment per OS so switching never breaks your setup. The Linux path is tested on Ubuntu/WSL with Python 3.14.
 
 ---
 
@@ -31,7 +35,7 @@ SearNXG gives an agent **live web results** through one self-hosted backend. Poi
 - Dark/light theme, keyboard shortcut `/`, search history, copy-as-JSON/Markdown
 - **First-run setup wizard** with plain-language choices, opened automatically on a fresh install
 - **Built-in offline library**: if every live source is blocked, search still returns clearly labelled sample results
-- **Friendly launcher**: `start.bat` checks for Python/Node, installs what's missing and picks free ports automatically
+- **Friendly launchers**: `start.bat` (Windows), `start.sh` / `start.command` (macOS, Linux) check dependencies, install what's missing and pick free ports automatically
 - **AI setup prompt**: the MCP docs generate a paste-ready prompt with your live URL and config so an AI harness can add the server itself
 
 ---
