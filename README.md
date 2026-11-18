@@ -38,36 +38,52 @@ SearNXG gives an agent **live web results** through one self-hosted backend. Poi
 
 ## Quick start
 
-### Option A — Local (Windows)
+### Option A — One-command launcher (Windows, macOS, Linux)
 
-```bat
-start.bat
-```
+| Platform | Run |
+| --- | --- |
+| Windows | double-click `start.bat` |
+| macOS | double-click `start.command`, or `./start.sh` |
+| Linux / WSL | `./start.sh` |
 
-The script creates a Python venv, installs backend and frontend dependencies, builds the UI, and starts both servers. It picks free ports automatically, so it prints the exact URLs it chose.
+The launcher creates a Python environment, installs dependencies, builds the UI, picks free ports automatically, starts both servers and opens your browser. It prints the exact URLs it chose.
 
-If Docker is installed and running, the script asks whether to also start a local SearXNG engine. Answer **Y** and it runs `docker compose up -d searxng` and connects the app to it; answer **N** and the app uses its built-in sources. Docker is entirely optional.
+If Docker is available it asks whether to also start a local SearXNG engine. Answer **Y** and it runs `docker compose up -d searxng` and connects the app to it; answer **N** and the app uses its built-in sources. Docker is optional on every platform.
 
-Open the printed UI URL (for example `http://localhost:5174`) in your browser.
+On macOS/Linux, run `./stop.sh` to stop both servers. On Windows, close the two terminal windows.
 
-> **Port conflicts:** if 8000 or 5173 are already used by another app, pick free ports.
-> `uvicorn app.main:app --port 8010` for the API, then in the frontend:
-> `$env:VITE_BACKEND_PORT = 8010; $env:VITE_UI_PORT = 5174; npm run dev`.
+> **Ubuntu/Debian prerequisite:** `sudo apt install python3-venv` (the launcher explains this if it's missing).
+> **Port override:** `BACKEND_PORT=8020 UI_PORT=5180 ./start.sh`, or set those variables before running `start.bat`.
 
 ### Option B — Manual
 
-```bash
-# Backend
-python -m venv .venv
-.venv\Scripts\python.exe -m pip install -r backend/requirements.txt
-cd backend
-.venv\Scripts\python.exe -m uvicorn app.main:app --port 8000
+Backend (Windows):
 
-# Frontend (separate terminal)
+```bat
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
+cd backend
+..\.venv\Scripts\python.exe -m uvicorn app.main:app --port 8010
+```
+
+Backend (macOS / Linux):
+
+```bash
+python3 -m venv .venv-unix
+.venv-unix/bin/python -m pip install -r backend/requirements.txt
+cd backend
+../.venv-unix/bin/python -m uvicorn app.main:app --port 8010
+```
+
+Frontend, in a second terminal (any OS):
+
+```bash
 cd frontend
 npm install
 npm run dev
 ```
+
+Point the dev UI at a non-default API port with `VITE_BACKEND_PORT=8010 VITE_UI_PORT=5174 npm run dev` (macOS/Linux) or `$env:VITE_BACKEND_PORT = 8010; $env:VITE_UI_PORT = 5174; npm run dev` (PowerShell).
 
 ### Option C — Docker (includes a real SearXNG instance)
 

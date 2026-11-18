@@ -18,6 +18,14 @@ if errorlevel 1 (
   exit /b 1
 )
 
+python -c "import sys; sys.exit(0 if sys.version_info >= (3,10) else 1)" >nul 2>&1
+if errorlevel 1 (
+  echo   Python 3.10 or newer is required.
+  echo   Download a current version from https://www.python.org/downloads/
+  pause
+  exit /b 1
+)
+
 where npm >nul 2>&1
 if errorlevel 1 (
   echo   Node.js is not installed.
@@ -104,12 +112,13 @@ if not exist ".venv\Scripts\python.exe" (
 )
 
 REM --- Set up the web interface --------------------------------------------
-if not exist "frontend\node_modules" (
-  echo   [2/4] Downloading the interface. This only happens once...
+if not exist "frontend\node_modules\.searnxg-windows" (
+  echo   [2/4] Installing the interface. This only happens once...
   pushd frontend
   call npm install
-  popd
   if errorlevel 1 goto :failed
+  echo ok > node_modules\.searnxg-windows
+  popd
 ) else (
   echo   [2/4] Interface files are ready.
 )
