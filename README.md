@@ -1,12 +1,20 @@
 # SearNXG
 
-A self-hosted web search layer for **humans and AI models**.
+**Free web search for AI models and humans. No search API bill, no vendor lock-in.**
 
-SearNXG aggregates multiple no-key search sources (Bing, DuckDuckGo, Wikipedia, Hacker News, GitHub) and your own [SearXNG](https://github.com/searxng/searxng) instance into one clean result set, then exposes it three ways:
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
+[![MCP compatible](https://img.shields.io/badge/MCP-compatible-7c3aed)](https://modelcontextprotocol.io/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-1. **A polished web UI** for people — search, filters, page reader, history, settings.
-2. **A REST API** for scripts and agents — JSON, Markdown or plain-text results.
-3. **An MCP server** with `web_search`, `fetch_url` and `list_sources` tools for Claude, Cursor and other AI clients.
+SearNXG gives an agent **live web results** through one self-hosted backend. Point Claude, Cursor or OpenCode at its **MCP server**, call the **REST API** from a script, or just search in the **browser**. It merges Bing, DuckDuckGo, Wikipedia, Hacker News, GitHub and your own [SearXNG](https://github.com/searxng/searxng) instance into one ranked list, and falls back to a built-in offline library when sources are blocked.
+
+### Why you'll want it
+
+- **Search for your AI, free.** MCP tools (`web_search`, `fetch_url`) work with any MCP client. OpenAI tool schemas included.
+- **A UI humans actually like.** Filters, page reader, search history, dark/light themes. No terminal required.
+- **Private if you want it.** Run your own SearXNG engine with one Docker command, or use zero-key built-in sources.
+- **Hard to break.** Parallel sources, per-source fallbacks, and offline results when the network fights back.
+- **One-click setup for agents.** Copy a prompt from the app and let your AI wire up the MCP itself.
 
 ---
 
