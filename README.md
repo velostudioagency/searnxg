@@ -22,9 +22,9 @@ SearNXG aggregates multiple no-key search sources (Bing, DuckDuckGo, Wikipedia, 
 - Ready-to-paste OpenAI function-calling tool definitions at `/api/tools/openai`
 - Dark/light theme, keyboard shortcut `/`, search history, copy-as-JSON/Markdown
 - **First-run setup wizard** with plain-language choices, opened automatically on a fresh install
-- **Simple / Advanced settings**: non-technical users see everyday controls by default; power users can switch
 - **Built-in offline library**: if every live source is blocked, search still returns clearly labelled sample results
 - **Friendly launcher**: `start.bat` checks for Python/Node, installs what's missing and picks free ports automatically
+- **AI setup prompt**: the MCP docs generate a paste-ready prompt with your live URL and config so an AI harness can add the server itself
 
 ---
 
@@ -88,8 +88,7 @@ Where does the address come from?
 
 How to connect:
 
-- **Simple view:** Settings → "Your own search engine (optional)" → paste the address → **Connect**. It tests the address before saving.
-- **Advanced view:** Settings → "SearXNG connection" → Instance URL → **Test connection** → Save changes.
+- Settings → "SearXNG connection" → Instance URL → **Test connection** → Save changes. The app tests the address before saving.
 - **Environment variable:** `SEARXNG_URL=http://localhost:8080` overrides the saved value at startup.
 - **Docker Compose:** already wired for you via `SEARXNG_URL: http://searxng:8080`.
 

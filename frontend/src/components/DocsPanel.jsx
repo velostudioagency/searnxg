@@ -169,7 +169,7 @@ response = client.chat.completions.create(
         <div className="doc-content">
           <section className="doc-section callout">
             <Icon name="sparkles" size={18} />
-            <div style={{ flex: 1 }}>
+            <div className="callout-main">
               <h2 style={{ marginBottom: 6 }}>Let your AI add it</h2>
               <p style={{ marginBottom: 12 }}>Copy this prompt into your AI harness. It contains the live URL and the exact config, so the model can wire up the server for you.</p>
               <CodeBlock label="Prompt to paste into your AI" code={aiPrompt} onCopy={onCopy} />

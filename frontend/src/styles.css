@@ -654,6 +654,7 @@ kbd {
   border: 1px solid var(--accent-line); border-radius: 12px;
   background: var(--accent-soft); padding: 14px; color: var(--accent);
 }
+.callout-main { flex: 1; min-width: 0; }
 .callout p { margin: 0; color: var(--text-soft); font-size: 12px; line-height: 1.7; }
 .muted { color: var(--muted); font-size: 11.5px; }
 
