@@ -1,0 +1,32 @@
+services:
+  # SearNXG app: REST API + MCP server + web UI in one container.
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Connect to the bundled SearXNG instance below.
+      SEARXNG_URL: http://searxng:8080
+      # REQUIRE_API_KEY: "true"
+      # API_KEYS: "sk-your-key"
+      # ADMIN_KEY: "change-me"
+    volumes:
+      - ./backend/data:/app/backend/data
+    depends_on:
+      - searxng
+    restart: unless-stopped
+
+  # Optional: the real SearXNG metasearch engine, configured to expose JSON.
+  searxng:
+    image: searxng/searxng:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./searxng/settings.yml:/etc/searxng/settings.yml:ro
+      - searxng-data:/var/lib/searxng
+    environment:
+      SEARXNG_BASE_URL: http://localhost:8080/
+    restart: unless-stopped
+
+volumes:
+  searxng-data:
